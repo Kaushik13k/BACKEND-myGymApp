@@ -22,7 +22,7 @@ async fn main() {
 
     let app = Router::new()
         .nest("/api/v1", routes::health::health_check())
-        .nest("/api/v1", routes::login::entry_point())
+        .nest("/api/v1", routes::entry_point::entry_point())
         .layer(cors);
 
     let token_middleware = tower::util::MapRequestLayer::new(middleware::middleware::set_context);
