@@ -1,13 +1,16 @@
-use axum::http::{self, Method};
-use axum::{Router, ServiceExt};
-
-use log::info;
+use axum::Router;
+use axum::{http::Method, ServiceExt};
 
 use tower::Layer;
 use tower_http::cors::{Any, CorsLayer};
 
+mod database;
+mod middleware;
 mod routes;
+mod schema;
+mod services;
 mod utils;
+mod models;
 
 #[tokio::main]
 async fn main() {
@@ -17,21 +20,16 @@ async fn main() {
         .allow_methods([Method::GET, Method::POST])
         .allow_origin(Any);
 
-    fn rewrite_request_uri<B>(req: http::Request<B>) -> http::Request<B> {
-        info!("Request: {:?}", req.uri());
-        info!("Request: {:?}", req.headers());
-        req
-    }
-
     let app = Router::new()
         .nest("/api/v1", routes::health::health_check())
+        .nest("/api/v1", routes::login::entry_point())
         .layer(cors);
 
-    let middleware_creat = tower::util::MapRequestLayer::new(rewrite_request_uri);
-    let app_with_middleware = middleware_creat.layer(app);
+    let token_middleware = tower::util::MapRequestLayer::new(middleware::middleware::set_context);
+    let token_middleware = token_middleware.layer(app);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    axum::serve(listener, app_with_middleware.into_make_service())
+    axum::serve(listener, token_middleware.into_make_service())
         .await
         .unwrap();
 }
