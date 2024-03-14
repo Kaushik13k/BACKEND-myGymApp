@@ -13,6 +13,6 @@ impl QueryRoot {
         username: String,
         password: String,
     ) -> Result<User, FieldError> {
-        login::user_login(context, username)
+        login::user_login(context, username, password)
     }
 }
