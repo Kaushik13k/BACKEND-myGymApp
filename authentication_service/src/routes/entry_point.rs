@@ -27,7 +27,7 @@ pub async fn entry_point_handler(
 
     let res = task::spawn_blocking(move || {
         let res = data.execute(&schema, &Context::new());
-        Ok::<_, serde_json::Error>(serde_json::to_string(&res)?)
+        Ok::<_, serde_json::Error>(serde_json::to_value(&res)?)
     })
     .await
     .unwrap();
@@ -39,7 +39,7 @@ pub async fn entry_point_handler(
         }
         Err(_) => {
             info!("Failed to execute the GraphQL request");
-            Ok::<_, Infallible>(Json("Internal server error".to_string()))
+            Ok::<_, Infallible>(Json(serde_json::json!({"error": "Internal server error"})))
         }
     }
 }
