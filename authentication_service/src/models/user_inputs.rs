@@ -19,3 +19,9 @@ pub struct InputSignup {
     pub phone_number: i32,
     pub age: i32,
 }
+
+#[derive(juniper::GraphQLInputObject)]
+pub struct ForgotPassword {
+    pub username: String,
+    pub password: String,
+}

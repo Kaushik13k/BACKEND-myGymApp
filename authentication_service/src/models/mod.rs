@@ -1,3 +1,4 @@
+pub mod forgot_password;
 pub mod signup;
 pub mod tokens;
 pub mod user_inputs;

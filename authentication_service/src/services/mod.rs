@@ -1,3 +1,4 @@
+pub mod forgot_password;
 pub mod get_user;
 pub mod login;
 pub mod mutation;
