@@ -1,6 +1,7 @@
 use crate::database::connection::Context;
 use crate::models::users::User;
 use crate::services::login;
+use crate::services::token;
 use juniper::FieldError;
 
 pub struct QueryRoot;
@@ -14,5 +15,9 @@ impl QueryRoot {
         password: String,
     ) -> Result<User, FieldError> {
         login::user_login(context, username, password)
+    }
+
+    pub fn token(&self, context: &Context, username: String) -> Result<String, FieldError> {
+        token::get_token(context, username)
     }
 }

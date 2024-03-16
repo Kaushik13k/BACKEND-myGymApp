@@ -1,25 +1,16 @@
 use crate::database::connection::Context;
 use crate::models::users::User;
-use crate::schema::users;
+use crate::services::get_user;
 use crate::utils::helpers;
-use diesel::prelude::{ExpressionMethods, QueryDsl, RunQueryDsl};
 use juniper::FieldError;
 use log::info;
-
-pub fn get_user(context: &Context, username: String) -> Result<User, diesel::result::Error> {
-    let connection = &mut context.db.establish_connection();
-    let user = users::users::table
-        .filter(users::users::username.eq(&username))
-        .first::<User>(connection);
-    return user;
-}
 
 pub fn user_login(
     context: &Context,
     username: String,
     password: String,
 ) -> Result<User, FieldError> {
-    let user_data = get_user(context, username);
+    let user_data = get_user::get_user(context, username);
     info!("User found: {:?}", user_data);
     match user_data {
         Ok(user_data) => {

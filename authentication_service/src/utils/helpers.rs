@@ -1,7 +1,7 @@
 use bcrypt::{hash, verify, DEFAULT_COST};
 use std::error::Error;
 
-pub fn hash_password(password: &str) -> Result<String, Box<dyn Error>> {
+pub fn _hash_password(password: &str) -> Result<String, Box<dyn Error>> {
     let hashed_password = hash(password, DEFAULT_COST)?;
     Ok(hashed_password)
 }
