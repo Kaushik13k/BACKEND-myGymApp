@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "e6ea59a5-78e9-44d4-abc6-b18947997890",
+		"name": "Rust - Auth-Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31400531"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Operation-Type",
+						"value": "health",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"health"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Operation-Type",
+						"value": "login",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IkR1bW15QER1bW15LmNvbSIsInVzZXJuYW1lIjoiRHVtbXkiLCJleHAiOjE3MTE5MDQ4OTd9.aJYS9OfqszTkAYWVgeFizD_y8t8rax6z14IJsQK-bQ4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"query ($login: Login!) { login(userInput: $login) { id, username } }\",\n    \"variables\": {\n        \"login\": {\n            \"username\": \"Dummy1\",\n            \"password\": \"Dummy1_Dummy\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Operation-Type",
+						"value": "token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"query ($userAvailable: UserAvailable!) { token(userInput: $userAvailable) }\",\n    \"variables\": {\n        \"userAvailable\": {\n            \"username\": \"Dummy\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Availablity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Hello",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"query ($userAvailable: UserAvailable!) { user(userInput: $userAvailable) }\",\n    \"variables\": {\n        \"userAvailable\": {\n            \"username\": \"Dummy\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Operation-Type",
+						"value": "signup",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation ($inputSignup: InputSignup!) { signup(userInput: $inputSignup) { username email } }\",\n  \"variables\": {\n    \"inputSignup\": {\n      \"firstname\": \"Dummy\",\n      \"lastname\": \"Dummy\",\n      \"username\": \"Dummy\",\n      \"email\": \"Dummy@Dummy.com\",\n      \"password\": \"Dummy_Dummy\",\n      \"phoneNumber\": 123456789,\n      \"age\": 12\n    }\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Operation-Type",
+						"value": "forgot_password",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IkR1bW15QER1bW15LmNvbSIsInVzZXJuYW1lIjoiRHVtbXkiLCJleHAiOjE3MTE5MDQ4OTd9.aJYS9OfqszTkAYWVgeFizD_y8t8rax6z14IJsQK-bQ4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": \"mutation ($forgotPassword: ForgotPassword!) { forgotPassword(userInput: $forgotPassword) { username } }\",\n  \"variables\": {\n    \"forgotPassword\": {\n      \"username\": \"Dummy1\",\n      \"password\": \"Dummy1_Dummy\"\n    }\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
