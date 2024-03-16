@@ -3,14 +3,13 @@ use axum::{http::Method, ServiceExt};
 
 use tower::Layer;
 use tower_http::cors::{Any, CorsLayer};
-
 mod database;
 mod middleware;
+mod models;
 mod routes;
 mod schema;
 mod services;
 mod utils;
-mod models;
 
 #[tokio::main]
 async fn main() {
