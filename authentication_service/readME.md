@@ -13,12 +13,10 @@ This microservice handles the basic authentication flow for the app
 - Docker (~24.0.7)
 
 ## Installation
-* Install Rust: [Rust Installation](https://doc.rust-lang.org/book/ch01-01-installation.html)
-* Install Docker: [Docker Installation](https://docs.docker.com/get-docker/)
-
+- Install Rust: [Rust Installation](https://doc.rust-lang.org/book/ch01-01-installation.html)
+- Install Docker: [Docker Installation](https://docs.docker.com/get-docker/)
 
 ## The Folder Structure
-
 ```.
 ├── authentication_service
 │   ├── Cargo.lock
@@ -68,14 +66,22 @@ This microservice handles the basic authentication flow for the app
 ```
 
 ## How to run
-- Setup Rust in Local https://doc.rust-lang.org/book/ch01-01-installation.html
-- Create a directory > run `cargo init`
-- Create a `.env` and save -> `DATABASE_URL` and `SECRET_KEY`
-- `cd` to `resources` and run `docker-compose up`
-- To run the project `cargo run`
+- Run DB Migrations
+* cd db_migrations
+* Install `cargo install diesel_cli --no-default-features --features postgres` Documentatio: `https://diesel.rs/guides/getting-started`
+* `diesel migration generate <migration_name>`
+* `diesel migration run`
+* If any issues `diesel migration revert`
+
+- Run App
+* Setup Rust in Local https://doc.rust-lang.org/book/ch01-01-installation.html
+* Create a directory > run `cargo init`
+* Create a `.env` and save -> `DATABASE_URL` and `SECRET_KEY`
+* `cd` to `resources` and run `docker-compose up`
+* To run the project `cargo run`
 
 ## Usage
-* Import the Postman collection and run it
+- Import the Postman collection and run it
 
 ## Testing
-* Run the unit tests with ```cargo test```
+- Run the unit tests with `cargo test`
