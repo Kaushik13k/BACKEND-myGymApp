@@ -66,14 +66,14 @@ This microservice handles the basic authentication flow for the app
 ```
 
 ## How to run
-- Run DB Migrations
+### Run DB Migrations
 * cd db_migrations
 * Install `cargo install diesel_cli --no-default-features --features postgres` Documentatio: `https://diesel.rs/guides/getting-started`
 * `diesel migration generate <migration_name>`
 * `diesel migration run`
 * If any issues `diesel migration revert`
 
-- Run App
+### Run App
 * Setup Rust in Local https://doc.rust-lang.org/book/ch01-01-installation.html
 * Create a directory > run `cargo init`
 * Create a `.env` and save -> `DATABASE_URL` and `SECRET_KEY`
