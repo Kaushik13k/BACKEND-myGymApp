@@ -43,7 +43,7 @@ pub fn entry_point() -> Router {
     let schema = Arc::new(create_schema());
 
     Router::new().route(
-        "/entry_point",
+        "/authentication",
         post(move |data: ExtractJson<GraphQLRequest>| {
             entry_point_handler(Arc::clone(&schema), data)
         }),
