@@ -11,6 +11,7 @@ use log::{error, info};
 use super::get_user;
 
 pub fn insert_user(context: &Context, new_user: Signup) -> Result<User, diesel::result::Error> {
+    info!("Inserting user");
     let connection = &mut context.db.establish_connection();
     let user = diesel::insert_into(users::users::table)
         .values(&new_user)
@@ -19,6 +20,7 @@ pub fn insert_user(context: &Context, new_user: Signup) -> Result<User, diesel::
 }
 
 pub fn user_signup(context: &Context, user_input: InputSignup) -> Result<User, FieldError> {
+    info!("User signup: {:?}", user_input.username);
     let username = user_input.username.clone();
     let password_hashed = hash_password(&user_input.password);
     let user_data = get_user::get_user(context, username);
@@ -49,7 +51,6 @@ pub fn user_signup(context: &Context, user_input: InputSignup) -> Result<User, F
                 }
                 Err(_) => {
                     error!("Failed to insert user");
-
                     Err(FieldError::new(
                         "Failed to insert user",
                         juniper::Value::null(),
