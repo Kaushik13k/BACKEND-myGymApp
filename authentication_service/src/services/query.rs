@@ -1,5 +1,6 @@
 use crate::database::connection::Context;
 use crate::models::users::User;
+use crate::services::get_user;
 use crate::services::login;
 use crate::services::token;
 use juniper::FieldError;
@@ -19,5 +20,9 @@ impl QueryRoot {
 
     pub fn token(&self, context: &Context, username: String) -> Result<String, FieldError> {
         token::get_token(context, username)
+    }
+
+    pub fn user(&self, context: &Context, username: String) -> Result<bool, FieldError> {
+        get_user::get_availablity(context, username)
     }
 }
