@@ -67,7 +67,7 @@ This microservice handles the basic authentication flow for the app
 
 ## How to run
 ### Run DB Migrations
-* cd db_migrations
+* cd `db_migrations`
 * Install `cargo install diesel_cli --no-default-features --features postgres` Documentatio: `https://diesel.rs/guides/getting-started`
 * `diesel migration generate <migration_name>`
 * `diesel migration run`
