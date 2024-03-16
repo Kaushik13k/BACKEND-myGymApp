@@ -1,6 +1,6 @@
 use crate::database::connection::Context;
+use crate::services::mutation::MutationRoot;
 use crate::services::query::QueryRoot;
-
 use axum::{extract::Json as ExtractJson, response::IntoResponse, Json};
 use axum::{routing::post, Router};
 use juniper::{http::GraphQLRequest, RootNode};
@@ -9,9 +9,9 @@ use tokio::task;
 
 use log::info;
 
-pub struct MutationRoot;
-#[juniper::object(Context = Context)]
-impl MutationRoot {}
+// pub struct MutationRoot;
+// #[juniper::object(Context = Context)]
+// impl MutationRoot {}
 
 pub type Schema = RootNode<'static, QueryRoot, MutationRoot>;
 
