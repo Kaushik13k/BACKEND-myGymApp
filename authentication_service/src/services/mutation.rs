@@ -1,5 +1,6 @@
 use crate::database::connection::Context;
-use crate::models::user_inputs::{ForgotPassword, InputSignup};
+use crate::models::signup::InputSignup;
+use crate::models::user_inputs::ForgotPassword;
 use crate::models::users::User;
 use crate::services::forgot_password;
 use crate::services::signup;

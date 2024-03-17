@@ -13,3 +13,14 @@ pub struct Signup<'a> {
     pub phone_number: &'a i32,
     pub age: &'a i32,
 }
+
+#[derive(juniper::GraphQLInputObject)]
+pub struct InputSignup {
+    pub firstname: String,
+    pub lastname: String,
+    pub username: String,
+    pub email: String,
+    pub password: String,
+    pub phone_number: i32,
+    pub age: i32,
+}

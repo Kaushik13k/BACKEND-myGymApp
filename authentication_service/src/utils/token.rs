@@ -11,7 +11,7 @@ pub fn encode_token(email_id: String, username: String) -> String {
     let sercet_key = env::var("SECRET_KEY").expect("sercet_key must be set");
     let converted_sercet_key = sercet_key.as_ref();
 
-    let expiration_hours = 360;
+    let expiration_hours = 120;
     let expiration_time = Utc::now()
         .checked_add_signed(Duration::try_hours(expiration_hours).expect("valid hours"))
         .expect("valid timestamp");

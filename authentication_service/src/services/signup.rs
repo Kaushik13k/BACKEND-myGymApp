@@ -1,6 +1,6 @@
 use crate::{
     database::connection::Context,
-    models::{signup::Signup, user_inputs::InputSignup, users::User},
+    models::{signup::{InputSignup, Signup}, users::User},
     schema::users,
     utils::helpers::hash_password,
 };
