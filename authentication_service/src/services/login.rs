@@ -15,7 +15,8 @@ pub fn user_login(
     match user_data {
         Ok(user_data) => {
             info!("User found...");
-            let is_valid_password = helpers::verify_password(&password, &user_data.hash);
+            let is_valid_password =
+                helpers::verify_password(&password, &user_data.hash.as_ref().unwrap().to_string());
             info!("User is_valid_password: {:?}", is_valid_password);
             if is_valid_password.unwrap() {
                 info!("User is valid");

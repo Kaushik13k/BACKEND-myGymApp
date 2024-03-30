@@ -1,12 +1,12 @@
 diesel::table! {
     users (id) {
         id -> Int4,
-        firstname -> Varchar,
-        lastname -> Varchar,
+        firstname -> Nullable<VarChar>,
+        lastname -> Nullable<VarChar>,
         username -> Varchar,
         email -> Varchar,
-        hash -> Varchar,
-        phone_number -> Int4,
-        age -> Int4,
+        hash -> Nullable<VarChar>,
+        phone_number -> Nullable<Int4>,
+        age -> Nullable<Int4>,
     }
 }

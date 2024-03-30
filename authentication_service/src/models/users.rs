@@ -4,11 +4,11 @@ use diesel::prelude::Queryable;
 
 pub struct User {
     pub id: i32,
-    pub firstname: String,
-    pub lastname: String,
+    pub firstname: Option<String>,
+    pub lastname: Option<String>,
     pub username: String,
     pub email: String,
-    pub hash: String,
-    pub phone_number: i32,
-    pub age: i32,
+    pub hash: Option<String>,
+    pub phone_number: Option<i32>,
+    pub age: Option<i32>,
 }

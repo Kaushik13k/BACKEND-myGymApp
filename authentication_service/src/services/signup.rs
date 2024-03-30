@@ -1,6 +1,9 @@
 use crate::{
     database::connection::Context,
-    models::{signup::{InputSignup, Signup}, users::User},
+    models::{
+        signup::{InputSignup, Signup},
+        users::User,
+    },
     schema::users,
     utils::helpers::hash_password,
 };
@@ -36,21 +39,22 @@ pub fn user_signup(context: &Context, user_input: InputSignup) -> Result<User, F
         Err(diesel::result::Error::NotFound) => {
             info!("No user found");
             let new_user = Signup {
-                firstname: &user_input.firstname,
-                lastname: &user_input.lastname,
-                username: &user_input.username,
-                email: &user_input.email,
-                hash: &password_hashed.unwrap(),
-                phone_number: &user_input.phone_number,
-                age: &user_input.age,
+                firstname: user_input.firstname,
+                lastname: user_input.lastname,
+                username: user_input.username,
+                email: user_input.email,
+                hash: password_hashed.unwrap(),
+                phone_number: user_input.phone_number,
+                age: user_input.age,
             };
+            info!("Inserting user {:?}", &new_user);
             match insert_user(context, new_user) {
                 Ok(user) => {
                     info!("The user was inserted successfully.");
                     Ok(user)
                 }
-                Err(_) => {
-                    error!("Failed to insert user");
+                Err(e) => {
+                    error!("Failed to insert user with error: {:?}", e);
                     Err(FieldError::new(
                         "Failed to insert user",
                         juniper::Value::null(),
