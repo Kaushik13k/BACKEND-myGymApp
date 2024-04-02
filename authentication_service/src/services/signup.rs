@@ -45,7 +45,7 @@ pub fn user_signup(context: &Context, user_input: InputSignup) -> Result<User, F
                 email: user_input.email,
                 hash: password_hashed.unwrap(),
                 phone_number: user_input.phone_number,
-                age: user_input.age,
+                dob: user_input.dob,
             };
             info!("Inserting user {:?}", &new_user);
             match insert_user(context, new_user) {

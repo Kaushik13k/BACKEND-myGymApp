@@ -53,7 +53,7 @@ pub fn forgot(context: &Context, user_input: ForgotPassword) -> Result<User, Fie
             return Err(FieldError::new("No user found", juniper::Value::null()));
         }
         Err(e) => {
-            error!("There was an error in the while getting token: {:?}", e);
+            error!("There was an error in the while updating password: {:?}", e);
             return Err(FieldError::new(
                 format!("Error: {:?}", e),
                 juniper::Value::null(),

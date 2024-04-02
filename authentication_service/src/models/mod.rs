@@ -1,3 +1,4 @@
+pub mod body_measurements;
 pub mod forgot_password;
 pub mod login;
 pub mod signup;

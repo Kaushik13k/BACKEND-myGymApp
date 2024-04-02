@@ -1,0 +1,69 @@
+use crate::schema::body_measurements;
+use diesel::prelude::Queryable;
+use diesel::Insertable;
+
+#[derive(Insertable, Debug)]
+#[diesel(table_name = body_measurements::body_measurements)]
+pub struct BodyMeasurements {
+    pub user_id: i32,
+    pub weight: Option<f64>,
+    pub height: Option<f64>,
+    pub weist: Option<f64>,
+    pub neck: Option<f64>,
+    pub shoulders: Option<f64>,
+    pub chest: Option<f64>,
+    pub left_bicep: Option<f64>,
+    pub right_bicep: Option<f64>,
+    pub left_forearm: Option<f64>,
+    pub right_forearm: Option<f64>,
+    pub abdomen: Option<f64>,
+    pub hips: Option<f64>,
+    pub left_thigh: Option<f64>,
+    pub right_thigh: Option<f64>,
+    pub left_calf: Option<f64>,
+    pub right_calf: Option<f64>,
+}
+
+#[derive(juniper::GraphQLInputObject)]
+pub struct BodyMeasurementsInput {
+    pub username: String,
+    pub weight: Option<f64>,
+    pub height: Option<f64>,
+    pub weist: Option<f64>,
+    pub neck: Option<f64>,
+    pub shoulders: Option<f64>,
+    pub chest: Option<f64>,
+    pub left_bicep: Option<f64>,
+    pub right_bicep: Option<f64>,
+    pub left_forearm: Option<f64>,
+    pub right_forearm: Option<f64>,
+    pub abdomen: Option<f64>,
+    pub hips: Option<f64>,
+    pub left_thigh: Option<f64>,
+    pub right_thigh: Option<f64>,
+    pub left_calf: Option<f64>,
+    pub right_calf: Option<f64>,
+}
+
+#[derive(Queryable, Debug, juniper::GraphQLObject)]
+
+pub struct BodyMeasurementsResult {
+    pub id: i32,
+    pub user_id: i32,
+    pub weight: Option<f64>,
+    pub height: Option<f64>,
+    pub weist: Option<f64>,
+    pub neck: Option<f64>,
+    pub shoulders: Option<f64>,
+    pub chest: Option<f64>,
+    pub left_bicep: Option<f64>,
+    pub right_bicep: Option<f64>,
+    pub left_forearm: Option<f64>,
+    pub right_forearm: Option<f64>,
+    pub abdomen: Option<f64>,
+    pub hips: Option<f64>,
+    pub left_thigh: Option<f64>,
+    pub right_thigh: Option<f64>,
+    pub left_calf: Option<f64>,
+    pub right_calf: Option<f64>,
+}

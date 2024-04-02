@@ -11,7 +11,7 @@ pub struct Signup {
     pub email: String,
     pub hash: String,
     pub phone_number: Option<i32>,
-    pub age: Option<i32>,
+    pub dob: Option<String>,
 }
 
 #[derive(juniper::GraphQLInputObject)]
@@ -22,5 +22,5 @@ pub struct InputSignup {
     pub email: String,
     pub password: String,
     pub phone_number: Option<i32>,
-    pub age: Option<i32>,
+    pub dob: Option<String>,
 }
