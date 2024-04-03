@@ -43,7 +43,6 @@ diesel::table! {
         hash -> Nullable<Varchar>,
         phone_number -> Nullable<Int4>,
         dob -> Nullable<Int4>,
-        height -> Nullable<Int4>,
     }
 }
 
