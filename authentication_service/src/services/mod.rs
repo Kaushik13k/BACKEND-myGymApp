@@ -1,6 +1,7 @@
-pub mod body_measurements;
 pub mod forgot_password;
+pub mod get_body_measurements;
 pub mod get_user;
+pub mod insert_body_measurements;
 pub mod login;
 pub mod mutation;
 pub mod query;

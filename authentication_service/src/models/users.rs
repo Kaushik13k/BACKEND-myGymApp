@@ -1,6 +1,6 @@
 use diesel::prelude::Queryable;
 
-#[derive(Queryable, Debug, juniper::GraphQLObject)]
+#[derive(Queryable, Debug, juniper::GraphQLObject, Clone)]
 
 pub struct User {
     pub id: i32,

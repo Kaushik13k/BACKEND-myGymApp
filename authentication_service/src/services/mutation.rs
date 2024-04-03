@@ -8,7 +8,7 @@ use crate::services::forgot_password;
 use crate::services::signup;
 use juniper::FieldError;
 
-use super::body_measurements;
+use super::insert_body_measurements;
 
 pub struct MutationRoot;
 
@@ -29,6 +29,6 @@ impl MutationRoot {
         context: &Context,
         user_input: BodyMeasurementsInput,
     ) -> Result<BodyMeasurementsResult, FieldError> {
-        body_measurements::insert_body_measurements(context, user_input)
+        insert_body_measurements::insert_body_measurements(context, user_input)
     }
 }

@@ -1,3 +1,5 @@
+use crate::database::connection::Context;
+use crate::models::users::User;
 use crate::schema::body_measurements;
 use diesel::prelude::Queryable;
 use diesel::Insertable;
@@ -45,7 +47,7 @@ pub struct BodyMeasurementsInput {
     pub right_calf: Option<f64>,
 }
 
-#[derive(Queryable, Debug, juniper::GraphQLObject)]
+#[derive(Queryable, Debug, juniper::GraphQLObject, Clone)]
 
 pub struct BodyMeasurementsResult {
     pub id: i32,
@@ -66,4 +68,20 @@ pub struct BodyMeasurementsResult {
     pub right_thigh: Option<f64>,
     pub left_calf: Option<f64>,
     pub right_calf: Option<f64>,
+}
+
+pub struct UserBodyMeasurements {
+    pub user: User,
+    pub body_measurements: BodyMeasurementsResult,
+}
+
+#[juniper::object(Context = Context)]
+impl UserBodyMeasurements {
+    pub fn user(&self) -> &User {
+        &self.user
+    }
+
+    pub fn body_measurements(&self) -> &BodyMeasurementsResult {
+        &self.body_measurements
+    }
 }
