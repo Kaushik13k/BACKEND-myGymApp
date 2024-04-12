@@ -10,5 +10,5 @@ pub struct User {
     pub email: String,
     pub hash: Option<String>,
     pub phone_number: Option<i32>,
-    pub dob: Option<String>,
+    pub dob: Option<i32>,
 }

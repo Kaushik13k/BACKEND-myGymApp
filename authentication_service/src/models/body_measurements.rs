@@ -24,6 +24,7 @@ pub struct BodyMeasurements {
     pub right_thigh: Option<f64>,
     pub left_calf: Option<f64>,
     pub right_calf: Option<f64>,
+    pub timestamp: Option<i32>,
 }
 
 #[derive(juniper::GraphQLInputObject)]
@@ -45,6 +46,7 @@ pub struct BodyMeasurementsInput {
     pub right_thigh: Option<f64>,
     pub left_calf: Option<f64>,
     pub right_calf: Option<f64>,
+    pub timestamp: Option<i32>,
 }
 
 #[derive(Queryable, Debug, juniper::GraphQLObject, Clone)]
@@ -68,6 +70,7 @@ pub struct BodyMeasurementsResult {
     pub right_thigh: Option<f64>,
     pub left_calf: Option<f64>,
     pub right_calf: Option<f64>,
+    pub timestamp: Option<i32>,
 }
 
 pub struct UserBodyMeasurements {

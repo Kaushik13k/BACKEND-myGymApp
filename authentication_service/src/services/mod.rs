@@ -7,3 +7,4 @@ pub mod mutation;
 pub mod query;
 pub mod signup;
 pub mod token;
+pub mod user_profile;

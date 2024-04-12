@@ -1,11 +1,13 @@
 use crate::database::connection::Context;
 use crate::models::body_measurements::BodyMeasurementsInput;
 use crate::models::body_measurements::BodyMeasurementsResult;
+use crate::models::profile::InputProfile;
 use crate::models::signup::InputSignup;
 use crate::models::user_inputs::ForgotPassword;
 use crate::models::users::User;
 use crate::services::forgot_password;
 use crate::services::signup;
+use crate::services::user_profile;
 use juniper::FieldError;
 
 use super::insert_body_measurements;
@@ -30,5 +32,8 @@ impl MutationRoot {
         user_input: BodyMeasurementsInput,
     ) -> Result<BodyMeasurementsResult, FieldError> {
         insert_body_measurements::insert_body_measurements(context, user_input)
+    }
+    pub fn profile(&self, context: &Context, user_input: InputProfile) -> Result<User, FieldError> {
+        user_profile::user_profile(context, user_input)
     }
 }

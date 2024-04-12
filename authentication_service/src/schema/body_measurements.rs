@@ -18,5 +18,6 @@ diesel::table! {
         right_thigh -> Nullable<Float8>,
         left_calf -> Nullable<Float8>,
         right_calf -> Nullable<Float8>,
+        timestamp -> Nullable<Int4>
     }
 }

@@ -7,6 +7,6 @@ diesel::table! {
         email -> Varchar,
         hash -> Nullable<VarChar>,
         phone_number -> Nullable<Int4>,
-        dob -> Nullable<VarChar>,
+        dob -> Nullable<Int4>,
     }
 }

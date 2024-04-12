@@ -33,6 +33,7 @@ pub fn insert_body_measurements(
             info!("id is: {:?}", user.id);
             let new_user = BodyMeasurements {
                 user_id: user.id,
+                timestamp: user_input.timestamp,
                 weight: user_input.weight,
                 height: user_input.height,
                 weist: user_input.weist,
