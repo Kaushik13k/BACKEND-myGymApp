@@ -8,7 +8,7 @@ from starlette.routing import Match
 from starlette.middleware import Middleware
 from starlette_context import plugins
 
-from app.routers import health, entry_point, muscle
+from routers import health, measurements
 from middleware.middleware import AccessTokenMiddleware
 
 logging.basicConfig(level=logging.INFO)
@@ -70,8 +70,7 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
-app.include_router(entry_point.router)
-app.include_router(muscle.router)
+app.include_router(measurements.router)
 
 
 if __name__ == "__main__":
