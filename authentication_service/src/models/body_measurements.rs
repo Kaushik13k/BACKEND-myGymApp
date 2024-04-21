@@ -75,7 +75,7 @@ pub struct BodyMeasurementsResult {
 
 pub struct UserBodyMeasurements {
     pub user: User,
-    pub body_measurements: BodyMeasurementsResult,
+    pub body_measurements: Vec<BodyMeasurementsResult>,
 }
 
 #[juniper::object(Context = Context)]
@@ -84,7 +84,7 @@ impl UserBodyMeasurements {
         &self.user
     }
 
-    pub fn body_measurements(&self) -> &BodyMeasurementsResult {
+    pub fn body_measurements(&self) -> &Vec<BodyMeasurementsResult> {
         &self.body_measurements
     }
 }

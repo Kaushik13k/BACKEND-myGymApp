@@ -1,0 +1,12 @@
+1. install the requirements.
+2. upload the env's
+3. Install redis - brew install redis
+4. start redis - brew services start redis
+5. check if redis is up - redis-cli ping
+6. check in terminal:
+   - redis-cli
+   - keys \*
+   - get your_key_name
+   - exit
+7. delete data from Redis
+   - DEL your_key_name
