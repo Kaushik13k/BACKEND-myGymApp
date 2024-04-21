@@ -12,7 +12,7 @@ use log::{error, info};
 pub fn get_user_and_measurements(
     context: &Context,
     username: String,
-) -> Result<(User, BodyMeasurementsResult), diesel::result::Error> {
+) -> Result<(User, Vec<BodyMeasurementsResult>), diesel::result::Error> {
     info!("Getting user and body measurements: {:?}", username);
     let connection = &mut context.db.establish_connection();
     let user = users::users::table
@@ -21,7 +21,7 @@ pub fn get_user_and_measurements(
 
     let body_measurement = body_measurements::body_measurements::table
         .filter(body_measurements::body_measurements::user_id.eq(&user.id)) // Assuming there's a user_id field in body_measurements
-        .first::<BodyMeasurementsResult>(connection)?;
+        .load::<BodyMeasurementsResult>(connection)?;
 
     return Ok((user, body_measurement));
 }
