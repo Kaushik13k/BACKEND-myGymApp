@@ -77,6 +77,7 @@ This microservice handles the basic authentication flow for the app
 * Setup Rust in Local https://doc.rust-lang.org/book/ch01-01-installation.html
 * Create a directory > run `cargo init`
 * Create a `.env` and save -> `DATABASE_URL` and `SECRET_KEY`
+* Togenerate `SECRET_KEY: openssl rand -hex 32` in terminal
 * `cd` to `resources` and run `docker-compose up`
 * To run the project `cargo run`
 
@@ -88,10 +89,7 @@ This microservice handles the basic authentication flow for the app
 
 ## Possible errors:
 - Installing Diesel:
-brew install libpq && brew link --force libpq
-brew install mysql-client
-brew install postgresql@14
 
-
-# openssl rand -hex 32
-# secret_key = ""
+        brew install libpq && brew link --force libpq
+        brew install mysql-client
+        brew install postgresql@14
