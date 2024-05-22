@@ -10,3 +10,15 @@
    - exit
 7. delete data from Redis
    - DEL your_key_name
+
+
+export PATH="/Users/kaushik13k/Library/Python/3.9/bin:$PATH"
+# openssl rand -hex 32
+# secret_key = ""
+
+POSTGRES_CONNECTION_URL = ""
+JWT_SECRET = ""
+AUTH_BASE_URL = ""
+REDIS_URL = ""
+REDIS_PORT = ""
+REDIS_DB = ""
