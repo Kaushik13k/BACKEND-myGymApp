@@ -1,24 +1,52 @@
-1. install the requirements.
-2. upload the env's
-3. Install redis - brew install redis
-4. start redis - brew services start redis
-5. check if redis is up - redis-cli ping
-6. check in terminal:
-   - redis-cli
-   - keys \*
-   - get your_key_name
-   - exit
-7. delete data from Redis
-   - DEL your_key_name
+# Authentication Service
+
+This microservice is responsible for handling the authentication and analytics flow for the app.
+
+## Contents:
+- Get body measurements
+
+## Prerequisites
+- Python (3.9.6)
+- Redis
+
+## Installation
+1. **Install Python 3.9.6**: You can download Python from [here](https://www.python.org/downloads/release/python-396/).
+2. **Install Pipenv**: Run `pip3 install pipenv` to install Pipenv, a tool for managing Python dependencies.
+3. **Install project dependencies**: Navigate to the project directory and run `pipenv install` to install the required Python packages listed in the `requirements.txt` file.
+
+## The Folder Structure
+```
+├── analytics_service
+
+```
 
 
-export PATH="/Users/kaushik13k/Library/Python/3.9/bin:$PATH"
-# openssl rand -hex 32
-# secret_key = ""
+## Environment Variables
+Ensure you set the following environment variables before running the service:
 
-POSTGRES_CONNECTION_URL = ""
-JWT_SECRET = ""
-AUTH_BASE_URL = ""
-REDIS_URL = ""
-REDIS_PORT = ""
-REDIS_DB = ""
+- `POSTGRES_CONNECTION_URL`: PostgreSQL connection URL.
+- `JWT_SECRET`: Secret key for JSON Web Token (JWT) generation.
+- `AUTH_BASE_URL`: Base URL of the authentication service.
+- `REDIS_URL`: Redis server URL.
+- `REDIS_PORT`: Redis server port.
+- `REDIS_DB`: Redis database number.
+
+## How to run
+* cd `analytics_service`
+* export `PATH="/Users/mac_username/Library/Python/3.9/bin:$PATH"`
+* `pip3 install pipenv && pipenv shell`
+* `pip3 install -r requirements.txt`
+* Export the Environment Variables
+
+## Setting Up Redis
+1. **Install Redis**: If not already installed, run `brew install redis` to install Redis using Homebrew.
+2. **Start Redis Server**: Run `brew services start redis` to start the Redis server.
+3. **Check Redis Status**: Verify that Redis is running by executing `redis-cli ping`. 
+4. **Test Redis**: Run `redis-cli`, then `keys *` to see all keys, and `get your_key_name` to retrieve a specific key.
+5. **Delete Data from Redis**: To delete data, run `DEL your_key_name` in the `redis-cli`.
+
+## Usage
+Import the Postman collection provided in the repository and execute the requests to interact with the authentication service.
+
+## Testing
+[Add information about how to run tests or any available testing suite here.]
