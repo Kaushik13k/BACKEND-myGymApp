@@ -35,6 +35,8 @@ def fetch_measurements(measurement: MeasurementInput, request: Request):
             )
 
         start_date = current_date - datetime.timedelta(days=days)
+        start_date = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        current_date = current_date.replace(hour=23, minute=59, second=59, microsecond=999999)
 
         key = f"{measurement.username}:{start_date.strftime('%Y-%m-%d')}:{current_date.strftime('%Y-%m-%d')}"
 

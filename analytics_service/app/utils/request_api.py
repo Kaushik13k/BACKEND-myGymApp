@@ -5,7 +5,7 @@ from enums.env import EnvironmentVariables
 
 
 def request_api(username, auth_token, operation_type, query_type):
-    base_url = EnvironmentVariables.AUTH_BASE_URL
+    base_url = EnvironmentVariables.AUTH_BASE_URL.value
     selector = QuerySelector(username)
     selected_query = selector.get_query(query_type)
 

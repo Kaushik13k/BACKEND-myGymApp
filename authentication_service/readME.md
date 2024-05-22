@@ -69,7 +69,7 @@ This microservice handles the basic authentication flow for the app
 ### Run DB Migrations
 * cd `db_migrations`
 * Install `cargo install diesel_cli --no-default-features --features postgres` Documentatio: `https://diesel.rs/guides/getting-started`
-* `diesel migration generate <migration_name>`
+* `diesel migration generate <migration_name>`  -- not needed
 * `diesel migration run`
 * If any issues `diesel migration revert`
 
@@ -85,3 +85,13 @@ This microservice handles the basic authentication flow for the app
 
 ## Testing
 - Run the unit tests with `cargo test`
+
+## Possible errors:
+- Installing Diesel:
+brew install libpq && brew link --force libpq
+brew install mysql-client
+brew install postgresql@14
+
+
+# openssl rand -hex 32
+# secret_key = ""

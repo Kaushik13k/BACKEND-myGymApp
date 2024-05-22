@@ -9,9 +9,6 @@ from enums.env import EnvironmentVariables
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# openssl rand -hex 32
-# secret_key = "ecbcf08955a279fac25d44f808f88f672287e34f72f5610905f0006d9de1a318"
-
 
 def generate_token(payload, expiration_hours=360):
     logger.error(f"Generating the token")
